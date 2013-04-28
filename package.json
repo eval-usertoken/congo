@@ -1,0 +1,23 @@
+{
+  "name": "congo",
+  "version": "0.0.1",
+  "description": "Congo is a thin wrapper for node-mongodb-native that makes connections and collections a little easier.",
+  "main": "congo.js",
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "congo",
+    "driver"
+  ],
+  "author": "Martin Rue",
+  "license": "BSD",
+  "dependencies": {
+    "mongodb": "~1.2.14",
+    "underscore": "~1.4.4",
+    "async": "~0.2.7",
+    "jasmine-node": "~1.7.0"
+  },
+  "scripts": {
+    "test": "jasmine-node --verbose spec --config test true"
+  }
+}
