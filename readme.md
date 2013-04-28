@@ -2,6 +2,12 @@
 
 Congo is a thin wrapper for [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) that makes connections and collections a little easier.
 
+## Installation
+
+```
+npm install https://github.com/martinrue/congo/tarball/master
+```
+
 ## Configuration
 
 The first thing you must do is call `configure` to tell congo where the database is and various other options about how the database connection should be made.
