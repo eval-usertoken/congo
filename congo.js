@@ -13,7 +13,8 @@ var parseArguments = function(args) {
     name: 'test',
     port: 27017,
     reconnect: false,
-    pool: 5
+    pool: 5,
+    collections: []
   };
 
   if (!(args || []).length) return config;
@@ -30,7 +31,7 @@ var parseArguments = function(args) {
   return config;
 };
 
-var getCollectionNames = function(connection, onComplete) {
+var getCollectionNames = function(connection, existing, onComplete) {
   connection.collectionNames(function(err, collections) {
     if (err) return onComplete(err);
 
@@ -42,7 +43,7 @@ var getCollectionNames = function(connection, onComplete) {
       return collection.name.match(/\.(.*)/i)[1];
     });
 
-    return onComplete(null, collectionNames);
+    return onComplete(null, _.union(collectionNames, existing));
   });
 };
 
@@ -98,7 +99,7 @@ var get = function(onComplete) {
   db.open(function(err, connection) {
     if (err) return onComplete(err);
 
-    getCollectionNames(connection, function(err, names) {
+    getCollectionNames(connection, _config.collections, function(err, names) {
       if (err) return onComplete(err);
 
       attachCollections(names, connection, function(err) {

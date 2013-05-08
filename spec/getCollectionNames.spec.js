@@ -17,7 +17,7 @@ describe('congo', function() {
       var names = [];
 
       runs(function() {
-        congo.getCollectionNames(connection, function(err, collectionNames) {
+        congo.getCollectionNames(connection, [], function(err, collectionNames) {
           names = collectionNames;
         });
       });
@@ -25,9 +25,31 @@ describe('congo', function() {
       waitsFor(function() { return names.length; }, 500);
 
       runs(function() {
+        expect(names.length).toBe(3);
         expect(names).toContain('one');
         expect(names).toContain('two');
         expect(names).toContain('db_three');
+        expect(names).not.toContain('indexes');
+      });
+    });
+
+    it('includes any manual collections that it did not already find', function() {
+      var names = [];
+
+      runs(function() {
+        congo.getCollectionNames(connection, ['one', 'four'], function(err, collectionNames) {
+          names = collectionNames;
+        });
+      });
+
+      waitsFor(function() { return names.length; }, 500);
+
+      runs(function() {
+        expect(names.length).toBe(4);
+        expect(names).toContain('one');
+        expect(names).toContain('two');
+        expect(names).toContain('db_three');
+        expect(names).toContain('four');
         expect(names).not.toContain('indexes');
       });
     });
