@@ -70,6 +70,30 @@ database.get(function(err, db) {
 });
 ```
 
+### New Collections
+
+Because congo queries all existing collections and attaches them to the database object, any new collections you intend to create won't have a corresponding `db.[collection]`. For this reason, you can supply an array of collections in the config that are always mapped onto the database object:
+
+```javascript
+var database = require('congo');
+
+var config = {
+  host: 'localhost',
+  name: 'mydb',
+  port: 27017,
+  reconnect: true,
+  pool: 10,
+  collections: ['users', 'products', 'orders']
+};
+
+database.configure(config);
+
+database.get(function(err, db) {
+  // db.users, db.products and db.orders will all be available, 
+  // irrespective of whether they existed in the database or not
+});
+```
+
 ### Connections
 
 Congo forms one pooled database connection internally and reuses it. This means you can call `get` anywhere and not worry about creating unnecessary additional connections.
