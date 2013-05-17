@@ -1,5 +1,6 @@
-var Db = require('mongodb').Db;
-var Server = require('mongodb').Server;
+var mongo = require('mongodb');
+var Db = mongo.Db;
+var Server = mongo.Server;
 var async = require('async');
 var _ = require('underscore');
 
@@ -115,6 +116,8 @@ module.exports = {
   get: get,
   on: on
 };
+
+_.extend(module.exports, mongo);
 
 if (process.env.test) {
   _.extend(module.exports, {

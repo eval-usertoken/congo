@@ -14,6 +14,18 @@ describe('congo', function() {
       expect(congo.get).toBeDefined();
     });
 
+    it('exposes an ObjectID function from mongo', function() {
+      expect(congo.ObjectID).toBeDefined();
+    });
+
+    it('exposes a BSON function from mongo', function() {
+      expect(congo.BSON).toBeDefined();
+    });
+
+    it('exposes a DBRef function from mongo', function() {
+      expect(congo.DBRef).toBeDefined();
+    });
+
     it('detects missing configure call', function() {
       var error = null;
 
