@@ -115,3 +115,18 @@ database.on('error', function() {
   // error occurred on the database
 });
 ```
+
+### ObjectID, DBRef, BSON, etc. Functions
+
+The `ObjectID` et al. functions that you would normally be able to access from `require('mongo').[func]` have all been extended onto congo and can be used in exactly the same way:
+
+```javascript
+var database = require('congo');
+
+database.get(function(err, db) {
+  db.users.findOne({ _id: database.ObjectID('...') }, function(err, user) {
+
+  });
+});
+```
+
