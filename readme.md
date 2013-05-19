@@ -4,6 +4,12 @@ Congo is a thin wrapper for [node-mongodb-native](https://github.com/mongodb/nod
 
 ## Installation
 
+### npm
+```
+npm install congo
+```
+
+### GitHub
 ```
 npm install https://github.com/martinrue/congo/tarball/master
 ```
