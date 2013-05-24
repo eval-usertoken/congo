@@ -1,6 +1,6 @@
-# congo.js
+# congo
 
-Congo is a thin wrapper for [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) that makes connections and collections a little easier.
+congo is a thin wrapper for [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) that makes connections and collections a little easier.
 
 ## Installation
 
@@ -56,7 +56,7 @@ database.get(function(err, db) {
 
 ### Collections
 
-Congo attaches any non-system collections directly onto the database object for you, so querying a collection is as simple as:
+All non-system collections are attached directly onto the database object for you, so querying a collection is as simple as:
 
 ```javascript
 database.get(function(err, db) {
@@ -102,7 +102,7 @@ database.get(function(err, db) {
 
 ### Connections
 
-Congo forms one pooled database connection internally and reuses it. This means you can call `get` anywhere and not worry about creating unnecessary additional connections.
+One pooled database connection is created internally and congo reuses it. This means you can call `get` anywhere and not worry about creating unnecessary additional connections.
 
 If `reconnect: true` is set on the configuration object, the mongo driver will reconnect automatically and this also queues commands and replays them once connections are reestablished. 
 
@@ -110,7 +110,7 @@ If `reconnect: false` is set (the default), congo itself reconnects closed conne
 
 ### Events
 
-Congo propogates events that occur on the database such as `'close'` and `'error'`. You can listen to these by passing a callback to the `on` function:
+Database events such as `'close'` and `'error'` are propogated. You can listen to these by passing a callback to the `on` function:
 
 ```javascript
 database.on('close', function() {
@@ -135,4 +135,3 @@ database.get(function(err, db) {
   });
 });
 ```
-
