@@ -3,7 +3,11 @@
   "version": "0.0.3",
   "description": "Congo is a thin wrapper for node-mongodb-native that makes connections and collections a little easier.",
   "main": "congo.js",
-  "repository": "https://github.com/martinrue/congo",
+  "homepage": "https://github.com/martinrue/congo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martinrue/congo"
+  },
   "keywords": [
     "mongo",
     "mongodb",
