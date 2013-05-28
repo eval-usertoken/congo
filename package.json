@@ -6,7 +6,7 @@
   "homepage": "https://github.com/martinrue/congo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/martinrue/congo"
+    "url": "https://github.com/martinrue/congo.git"
   },
   "keywords": [
     "mongo",
